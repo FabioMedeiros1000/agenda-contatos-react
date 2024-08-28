@@ -47,25 +47,30 @@ export const Telefone = styled.input`
   width: 100%;
 `
 
-export const BotaoEditar = styled.button`
+const Botao = styled.button`
   font-size: 22px;
   color: ${variaveis.branco};
   padding: 16px 40px;
-  background-color: ${variaveis.cinza};
   display: inline-block;
   border-radius: 12px;
   cursor: pointer;
   border: none;
 `
 
-export const BotaoExcluir = styled.button`
-  font-size: 22px;
-  color: ${variaveis.branco};
-  padding: 16px 40px;
+export const BotaoEditar = styled(Botao)`
+  background-color: ${variaveis.cinza};
+`
+
+export const BotaoExcluir = styled(Botao)`
   background-color: ${variaveis.vermelho};
-  display: inline-block;
-  border-radius: 12px;
   margin-left: 8px;
-  cursor: pointer;
-  border: none;
+`
+
+export const BotaoSalvar = styled(Botao)`
+  background-color: ${variaveis.verde};
+`
+
+export const BotaoCancelar = styled(Botao)`
+  background-color: ${variaveis.vermelho};
+  margin-left: 8px;
 `

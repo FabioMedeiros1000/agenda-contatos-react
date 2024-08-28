@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
-import { remover } from '../../store/reducers/contatos'
+import { remover, editar } from '../../store/reducers/contatos'
 
 export type ContatoProps = {
   nome: string
@@ -57,12 +57,36 @@ const Contato = ({
           value={telefone}
           onChange={(evento) => setTelefone(evento.target.value)}
         />
-        <S.BotaoEditar onClick={() => setEstaEditando(true)}>
-          Editar
-        </S.BotaoEditar>
-        <S.BotaoExcluir onClick={() => dispatch(remover(id))}>
-          Excluir
-        </S.BotaoExcluir>
+        {estaEditando ? (
+          <>
+            <S.BotaoSalvar
+              onClick={() => {
+                dispatch(editar({ nome, email, id, telefone }))
+                setEstaEditando(false)
+              }}
+            >
+              Salvar
+            </S.BotaoSalvar>
+            <S.BotaoCancelar
+              onClick={() => {
+                setEstaEditando(false)
+                setTelefone(telefoneOriginal)
+                setEmail(emailOriginal)
+              }}
+            >
+              Cancelar
+            </S.BotaoCancelar>
+          </>
+        ) : (
+          <>
+            <S.BotaoEditar onClick={() => setEstaEditando(true)}>
+              Editar
+            </S.BotaoEditar>
+            <S.BotaoExcluir onClick={() => dispatch(remover(id))}>
+              Excluir
+            </S.BotaoExcluir>
+          </>
+        )}
       </S.Card>
     </>
   )
