@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 
 import EstiloGlobal, { Container } from './styles'
 import SideBar from './containers/SideBar'
-import ListaDeContatos from './containers/ListaDeContatos'
+import MeusContatos from './containers/MeusContatos'
 import store from './store'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <EstiloGlobal />
       <Container>
         <SideBar />
-        <ListaDeContatos />
+        <MeusContatos />
       </Container>
     </Provider>
   )

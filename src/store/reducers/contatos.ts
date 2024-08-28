@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Contato } from '../../components/Card'
+import { ContatoProps } from '../../components/Contato'
 
 type ContatoState = {
-  itens: Contato[]
+  itens: ContatoProps[]
 }
 
 const initialState: ContatoState = {
