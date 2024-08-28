@@ -20,13 +20,6 @@ export const Card = styled.div`
   border-radius: 16px;
 `
 
-export const Nome = styled.p`
-  color: ${variaveis.preto};
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 24px;
-`
-
 export const Email = styled.input`
   font-size: 22px;
   color: ${variaveis.preto};

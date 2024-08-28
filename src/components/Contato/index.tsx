@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
 import { remover, editar } from '../../store/reducers/contatos'
+import { P } from '../../styles'
+import variaveis from '../../styles/variaveis'
 
 export type ContatoProps = {
   nome: string
@@ -18,6 +20,7 @@ const Contato = ({
   id
 }: ContatoProps) => {
   const dispatch = useDispatch()
+
   const [estaEditando, setEstaEditando] = useState(false)
   const [email, setEmail] = useState('')
   const [telefone, setTelefone] = useState('')
@@ -45,7 +48,9 @@ const Contato = ({
   return (
     <>
       <S.Card>
-        <S.Nome>{nome}</S.Nome>
+        <P color={variaveis.preto} bold={true} size={32}>
+          {nome}
+        </P>
         <S.Email
           ref={emailInputRef}
           disabled={!estaEditando}
