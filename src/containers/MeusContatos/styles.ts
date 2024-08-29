@@ -19,9 +19,10 @@ export const Titulo = styled.h1`
   color: ${variaveis.branco};
   font-size: 48px;
   font-weight: 700;
+`
 
-  p {
-    color: ${variaveis.branco};
-    font-size: 22px;
-  }
+export const P = styled.p`
+  color: ${variaveis.branco};
+  font-size: 22px;
+  margin-bottom: 24px;
 `

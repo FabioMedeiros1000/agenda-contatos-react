@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
 import * as S from './styles'
-import { P } from '../../styles'
-import variaveis from '../../styles/variaveis'
 
 const MeusContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos)
@@ -29,9 +27,7 @@ const MeusContatos = () => {
     <S.Container>
       <S.Titulo>Meus contatos</S.Titulo>
       {itens.length === 0 ? (
-        <P color={variaveis.branco} bold={false} size={22}>
-          Não há contatos cadastrados!
-        </P>
+        <S.P>Não há contatos cadastrados!</S.P>
       ) : (
         <S.CardContainer>
           {contatos.map((i) => (

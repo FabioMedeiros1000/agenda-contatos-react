@@ -67,3 +67,14 @@ export const BotaoCancelar = styled(Botao)`
   background-color: ${variaveis.vermelho};
   margin-left: 8px;
 `
+
+export const Name = styled.input`
+  color: ${variaveis.preto};
+  font-size: 32px;
+  margin-bottom: 24px;
+  font-weight: 700;
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+`

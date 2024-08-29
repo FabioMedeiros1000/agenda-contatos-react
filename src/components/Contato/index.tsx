@@ -3,8 +3,6 @@ import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
 import { remover, editar } from '../../store/reducers/contatos'
-import { P } from '../../styles'
-import variaveis from '../../styles/variaveis'
 
 export type ContatoProps = {
   nome: string
@@ -14,7 +12,7 @@ export type ContatoProps = {
 }
 
 const Contato = ({
-  nome,
+  nome: nomeOriginal,
   email: emailOriginal,
   telefone: telefoneOriginal,
   id
@@ -24,35 +22,35 @@ const Contato = ({
   const [estaEditando, setEstaEditando] = useState(false)
   const [email, setEmail] = useState('')
   const [telefone, setTelefone] = useState('')
+  const [nome, setNome] = useState('')
 
-  const emailInputRef = useRef<HTMLInputElement>(null)
+  const nomeInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (telefoneOriginal.length > 0) {
       setTelefone(telefoneOriginal)
     }
-  }, [telefoneOriginal])
-
-  useEffect(() => {
     if (emailOriginal.length > 0) {
       setEmail(emailOriginal)
     }
-  }, [emailOriginal])
-
-  useEffect(() => {
-    if (estaEditando && emailInputRef.current) {
-      emailInputRef.current.focus()
+    if (nomeOriginal.length > 0) {
+      setNome(nomeOriginal)
     }
-  }, [estaEditando])
+    if (estaEditando && nomeInputRef.current) {
+      nomeInputRef.current.focus()
+    }
+  }, [telefoneOriginal, emailOriginal, nomeOriginal, estaEditando])
 
   return (
     <>
       <S.Card>
-        <P color={variaveis.preto} bold={true} size={32}>
-          {nome}
-        </P>
+        <S.Name
+          ref={nomeInputRef}
+          disabled={!estaEditando}
+          value={nome}
+          onChange={(evento) => setNome(evento.target.value)}
+        />
         <S.Email
-          ref={emailInputRef}
           disabled={!estaEditando}
           value={email}
           onChange={(evento) => setEmail(evento.target.value)}
@@ -77,6 +75,7 @@ const Contato = ({
                 setEstaEditando(false)
                 setTelefone(telefoneOriginal)
                 setEmail(emailOriginal)
+                setNome(nomeOriginal)
               }}
             >
               Cancelar
