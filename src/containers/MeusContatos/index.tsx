@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
 import * as S from './styles'
+import BotaoAdicionar from '../../components/BotaoAdicionar'
 
 const MeusContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos)
@@ -42,6 +43,7 @@ const MeusContatos = () => {
           ))}
         </S.CardContainer>
       )}
+      <BotaoAdicionar />
     </S.Container>
   )
 }
