@@ -49,16 +49,19 @@ const Contato = ({
           disabled={!estaEditando}
           value={nome}
           onChange={(evento) => setNome(evento.target.value)}
+          placeholder="Nome"
         />
         <S.Email
           disabled={!estaEditando}
           value={email}
           onChange={(evento) => setEmail(evento.target.value)}
+          placeholder="Email"
         />
         <S.Telefone
           disabled={!estaEditando}
           value={telefone}
           onChange={(evento) => setTelefone(evento.target.value)}
+          placeholder="Telefone"
         />
         {estaEditando ? (
           <>

@@ -8,40 +8,10 @@ type ContatoState = {
 const initialState: ContatoState = {
   itens: [
     {
-      nome: 'João',
-      email: 'exemplo@gmail.com',
+      nome: 'Fábio Leandro Medeiros',
+      email: 'fabio.leandro.medeiros@gmail.com',
       telefone: '(82) 99187-1637',
       id: 1
-    },
-    {
-      nome: 'Júlio',
-      email: 'exemplo@gmail.com',
-      telefone: '(82) 99187-1637',
-      id: 2
-    },
-    {
-      nome: 'Bernardo',
-      email: 'exemplo@gmail.com',
-      telefone: '(82) 99187-1637',
-      id: 3
-    },
-    {
-      nome: 'Alex',
-      email: 'exemplo@gmail.com',
-      telefone: '(82) 99187-1637',
-      id: 4
-    },
-    {
-      nome: 'Fábio',
-      email: 'exemplo@gmail.com',
-      telefone: '(82) 99187-1637',
-      id: 5
-    },
-    {
-      nome: 'Matheus',
-      email: 'exemplo@gmail.com',
-      telefone: '(82) 99187-1637',
-      id: 6
     }
   ]
 }

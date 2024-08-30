@@ -28,10 +28,7 @@ const MeusContatos = () => {
     <S.Container>
       <S.Titulo>Meus contatos</S.Titulo>
       {itens.length === 0 ? (
-        <S.P>
-          Não há contatos cadastrados! Clique no Botão +, depois em editar e,
-          por fim, edite as informações do contato para cadastrá-lo!
-        </S.P>
+        <S.P>Não há contatos cadastrados!</S.P>
       ) : (
         <S.CardContainer>
           {contatos.map((i) => (
