@@ -76,8 +76,6 @@ const contatosSlice = createSlice({
           id: ultimoContato ? ultimoContato.id + 1 : 1
         }
         state.itens.push(contatoNovo)
-
-        console.log(ultimoContato.id + 1)
       }
     }
   }

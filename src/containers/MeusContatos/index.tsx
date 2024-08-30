@@ -4,13 +4,10 @@ import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
 import * as S from './styles'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
-import { useState } from 'react'
 
 const MeusContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos)
   const { termo } = useSelector((state: RootReducer) => state.filtro)
-
-  const [estaEditando, setEstaEditando] = useState(false)
 
   const filtraContatos = () => {
     let contatosFiltrados = itens
@@ -46,7 +43,7 @@ const MeusContatos = () => {
           ))}
         </S.CardContainer>
       )}
-      <BotaoAdicionar editando={estaEditando} setEditando={setEstaEditando} />
+      <BotaoAdicionar />
     </S.Container>
   )
 }

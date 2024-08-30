@@ -9,20 +9,17 @@ export type ContatoProps = {
   email: string
   telefone: string
   id: number
-  editando?: boolean
-  setEditando?: (value: boolean) => void
 }
 
 const Contato = ({
   nome: nomeOriginal,
   email: emailOriginal,
   telefone: telefoneOriginal,
-  id,
-  editando,
-  setEditando
+  id
 }: ContatoProps) => {
   const dispatch = useDispatch()
 
+  const [estaEditando, setEstaEditando] = useState(false)
   const [email, setEmail] = useState('')
   const [telefone, setTelefone] = useState('')
   const [nome, setNome] = useState('')
