@@ -1,22 +1,27 @@
 import { Botao } from './styles'
 import { useDispatch } from 'react-redux'
 import { cadastrar } from '../../store/reducers/contatos'
-import { ContatoProps } from '../Contato'
 
-const contatos: ContatoProps = {
-  id: 20,
-  nome: 'Digite o nome aqui',
-  email: 'Digite o email aqui',
-  telefone: 'Digite o telefone aqui'
-}
+import { ContatoProps } from '../../components/Contato'
 
-const BotaoAdicionar = () => {
+const BotaoAdicionar = ({
+  editando,
+  setEditando
+}: Omit<ContatoProps, 'nome' | 'email' | 'id' | 'telefone'>) => {
   const dispatch = useDispatch()
+  // const { estaEditando, setEstaEditando } = useEditar()
 
   return (
     <Botao
       onClick={() => {
-        dispatch(cadastrar(contatos))
+        dispatch(
+          cadastrar({
+            nome: 'Digite o nome',
+            email: 'Digite o email',
+            telefone: 'Digite o telefone'
+          })
+        )
+        // setEstaEditando(true)
       }}
     >
       +
