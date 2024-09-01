@@ -1,13 +1,23 @@
 import { useSelector } from 'react-redux'
-
 import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
 import * as S from './styles'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
+import { useState } from 'react'
 
 const MeusContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos)
   const { termo } = useSelector((state: RootReducer) => state.filtro)
+
+  const [cadastrando, setCadastrando] = useState(false)
+
+  const handleBotaoClick = (evento: boolean) => {
+    if (evento === true) {
+      setCadastrando(true)
+    } else {
+      setCadastrando(false)
+    }
+  }
 
   const filtraContatos = () => {
     let contatosFiltrados = itens
@@ -38,12 +48,17 @@ const MeusContatos = () => {
                 email={i.email}
                 nome={i.nome}
                 telefone={i.telefone}
+                cadastrando={cadastrando}
+                onClickBotao={handleBotaoClick}
               />
             </li>
           ))}
         </S.CardContainer>
       )}
-      <BotaoAdicionar />
+      <BotaoAdicionar
+        cadastrando={cadastrando}
+        onClickBotao={handleBotaoClick}
+      />
     </S.Container>
   )
 }

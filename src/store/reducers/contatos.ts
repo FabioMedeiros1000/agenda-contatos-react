@@ -6,14 +6,7 @@ type ContatoState = {
 }
 
 const initialState: ContatoState = {
-  itens: [
-    {
-      nome: 'Fábio Leandro Medeiros',
-      email: 'fabio.leandro.medeiros@gmail.com',
-      telefone: '(82) 99187-1637',
-      id: 1
-    }
-  ]
+  itens: []
 }
 
 const contatosSlice = createSlice({
@@ -38,7 +31,11 @@ const contatosSlice = createSlice({
       )
 
       if (contatoJaExiste) {
-        alert('Já existe um contato com esse nome!')
+        if (contatoJaExiste.nome.length !== 0) {
+          alert('Já existe um contato com esse nome!')
+        } else {
+          alert('Digite o nome do contato')
+        }
       } else {
         const ultimoContato = state.itens[state.itens.length - 1]
         const contatoNovo = {
