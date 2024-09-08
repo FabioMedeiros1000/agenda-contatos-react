@@ -18,7 +18,7 @@ A **Agenda de Contatos** é uma aplicação web intuitiva e funcional desenvolvi
 ## Como Executar o Projeto
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/SeuUsuario/agenda-contatos.git
+   git clone https://github.com/FabioMedeiros1000/agenda-contatos-react.git
    ```
 2. Instale as dependências:
    ```bash
