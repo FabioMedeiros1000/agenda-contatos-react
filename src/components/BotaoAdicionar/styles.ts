@@ -1,15 +1,28 @@
 import styled from 'styled-components'
-import variaveis from '../../styles/variaveis'
+import variaveis, { breakpoints } from '../../styles/variaveis'
 
 export const Botao = styled.button`
   border-radius: 50%;
   border: none;
   background-color: ${variaveis.verde};
-  font-size: 80px;
+  font-size: 65px;
   color: ${variaveis.branco};
-  padding: 16px 40px;
+  padding: 12px 35px;
+  cursor: pointer;
   position: fixed;
   right: 45px;
   bottom: 10px;
-  cursor: pointer;
+
+  @media (max-width: ${breakpoints.pc}) {
+    position: fixed;
+    right: 25px;
+    bottom: 10px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 22px;
+    padding: 4px 10px;
+    right: 25px;
+    bottom: 15px;
+  }
 `

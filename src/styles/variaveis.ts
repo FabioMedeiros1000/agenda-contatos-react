@@ -6,3 +6,8 @@ export default {
   preto: '#3D3D34',
   verde: '#128054'
 }
+
+export const breakpoints = {
+  tablet: '768px',
+  pc: '1023px'
+}

@@ -1,23 +1,19 @@
 import styled from 'styled-components'
-import variaveis from '../../styles/variaveis'
-
-export const Container = styled.div`
-  padding: 56px 96px 56px 32px;
-  background-color: ${variaveis.preto};
-  height: 100vh;
-  overflow-y: scroll;
-`
-
-export const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-`
+import variaveis, { breakpoints } from '../../styles/variaveis'
 
 export const Card = styled.div`
   padding: 16px;
   background-color: ${variaveis.branco};
   border-radius: 16px;
+
+  @media (max-width: ${breakpoints.pc}) {
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 8px;
+    border-radius: 16px;
+  }
 `
 
 export const Email = styled.input`
@@ -28,6 +24,10 @@ export const Email = styled.input`
   background-color: transparent;
   border: none;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 12px;
+  }
 `
 
 export const Telefone = styled.input`
@@ -38,6 +38,10 @@ export const Telefone = styled.input`
   background-color: transparent;
   border: none;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 12px;
+  }
 `
 
 const Botao = styled.button`
@@ -48,6 +52,11 @@ const Botao = styled.button`
   border-radius: 12px;
   cursor: pointer;
   border: none;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 12px;
+    padding: 8px;
+  }
 `
 
 export const BotaoEditar = styled(Botao)`
@@ -77,4 +86,8 @@ export const Name = styled.input`
   background-color: transparent;
   border: none;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 16px;
+  }
 `
