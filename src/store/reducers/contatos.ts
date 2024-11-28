@@ -31,11 +31,7 @@ const contatosSlice = createSlice({
       )
 
       if (contatoJaExiste) {
-        if (contatoJaExiste.nome.length !== 0) {
-          alert('Já existe um contato com esse nome!')
-        } else {
-          alert('Digite o nome do contato')
-        }
+        alert('Já existe um contato com esse nome!')
       } else {
         const ultimoContato = state.itens[state.itens.length - 1]
         const contatoNovo = {

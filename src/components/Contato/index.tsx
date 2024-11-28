@@ -25,10 +25,10 @@ const Contato = ({
   const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contatos)
 
-  const [estaEditando, setEstaEditando] = useState(false)
+  const [estaEditando, setEstaEditando] = useState(cadastrando || false)
+  const [nome, setNome] = useState(nomeOriginal)
   const [email, setEmail] = useState(emailOriginal)
   const [telefone, setTelefone] = useState(telefoneOriginal)
-  const [nome, setNome] = useState(nomeOriginal)
 
   const nomeInputRef = useRef<HTMLInputElement>(null)
 
@@ -39,12 +39,13 @@ const Contato = ({
   }, [estaEditando])
 
   useEffect(() => {
-    if (cadastrando === true && id === itens.length) {
-      setEstaEditando(true)
-    } else {
-      setEstaEditando(false)
+    const contatoAtual = itens.find((item) => item.id === id)
+    if (contatoAtual) {
+      setNome(contatoAtual.nome || '')
+      setEmail(contatoAtual.email || '')
+      setTelefone(contatoAtual.telefone || '')
     }
-  }, [cadastrando, id, itens.length])
+  }, [id, itens])
 
   return (
     <S.Card>
@@ -71,12 +72,19 @@ const Contato = ({
         <>
           <S.BotaoSalvar
             onClick={() => {
-              if (nome.length === 0) {
+              if (nome.trim().length === 0) {
                 alert('Digite o nome do contato')
               } else {
                 if (cadastrando) onClickBotao(false)
 
-                dispatch(editar({ nome, email, id, telefone }))
+                dispatch(
+                  editar({
+                    nome: nome.trim(),
+                    email: email.trim(),
+                    telefone: telefone.trim(),
+                    id
+                  })
+                )
                 setEstaEditando(false)
               }
             }}
@@ -85,14 +93,15 @@ const Contato = ({
           </S.BotaoSalvar>
           <S.BotaoCancelar
             onClick={() => {
-              if (cadastrando === true) {
+              if (cadastrando && !nome.trim()) {
                 onClickBotao(false)
                 dispatch(remover(id))
+              } else {
+                setEstaEditando(false)
+                setNome(nomeOriginal)
+                setEmail(emailOriginal)
+                setTelefone(telefoneOriginal)
               }
-              setEstaEditando(false)
-              setTelefone(telefoneOriginal)
-              setEmail(emailOriginal)
-              setNome(nomeOriginal)
             }}
           >
             Cancelar

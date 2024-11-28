@@ -1,38 +1,32 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
 import * as S from './styles'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
+import { cadastrar } from '../../store/reducers/contatos'
 
 const MeusContatos = () => {
+  const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contatos)
   const { termo } = useSelector((state: RootReducer) => state.filtro)
 
   const [cadastrando, setCadastrando] = useState(false)
 
   const handleBotaoClick = (evento: boolean) => {
-    if (evento === true) {
-      setCadastrando(true)
-    } else {
-      setCadastrando(false)
+    if (evento) {
+      const novoContato = { nome: '', email: '', telefone: '' }
+      dispatch(cadastrar(novoContato))
     }
+    setCadastrando(evento)
   }
 
-  const filtraContatos = () => {
-    let contatosFiltrados = itens
-
-    if (termo !== undefined) {
-      contatosFiltrados = contatosFiltrados.filter(
-        (t) => t.nome.toLowerCase().search(termo.toLowerCase()) >= 0
-      )
-      return contatosFiltrados
-    } else {
-      return itens
-    }
-  }
-
-  const contatos = filtraContatos()
+  const contatos = useMemo(() => {
+    if (!termo) return itens
+    return itens.filter((t) =>
+      t.nome.toLowerCase().includes(termo.toLowerCase())
+    )
+  }, [itens, termo])
 
   return (
     <S.Container>
@@ -48,7 +42,7 @@ const MeusContatos = () => {
                 email={i.email}
                 nome={i.nome}
                 telefone={i.telefone}
-                cadastrando={cadastrando}
+                cadastrando={cadastrando && i.id === itens.length}
                 onClickBotao={handleBotaoClick}
               />
             </li>
