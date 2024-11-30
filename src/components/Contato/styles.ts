@@ -24,9 +24,12 @@ export const Email = styled.input`
   background-color: transparent;
   border: none;
   width: 100%;
+  padding: 8px;
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 12px;
+    margin-bottom: 0;
+    padding: 0 4px;
   }
 `
 
@@ -38,9 +41,11 @@ export const Telefone = styled.input`
   background-color: transparent;
   border: none;
   width: 100%;
+  padding: 8px;
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 12px;
+    padding: 0 4px;
   }
 `
 
@@ -86,8 +91,11 @@ export const Name = styled.input`
   background-color: transparent;
   border: none;
   width: 100%;
+  padding: 8px;
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 16px;
+    margin-bottom: 16px;
+    padding: 0 4px;
   }
 `

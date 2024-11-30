@@ -2,120 +2,96 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
-import { remover, editar } from '../../store/reducers/contatos'
+
 import { BotaoAdicionarProps } from '../BotaoAdicionar'
 
 import { RootReducer } from '../../store'
+import BotaoComposicao from '../BotaoComposicao'
+import { setEstaEditando } from '../../store/reducers/contatos'
 
 export type ContatoProps = {
   nome: string
   email: string
   telefone: string
   id: number
+  estaEditando: boolean
 }
 
 const Contato = ({
   nome: nomeOriginal,
   email: emailOriginal,
   telefone: telefoneOriginal,
-  id,
-  cadastrando,
-  onClickBotao
+  id
 }: ContatoProps & BotaoAdicionarProps) => {
   const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contatos)
 
-  const [estaEditando, setEstaEditando] = useState(cadastrando || false)
   const [nome, setNome] = useState(nomeOriginal)
   const [email, setEmail] = useState(emailOriginal)
   const [telefone, setTelefone] = useState(telefoneOriginal)
 
   const nomeInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (estaEditando && nomeInputRef.current) {
-      nomeInputRef.current.focus()
-    }
-  }, [estaEditando])
+  const contatoAtual = itens.find((item) => item.id === id)
 
   useEffect(() => {
-    const contatoAtual = itens.find((item) => item.id === id)
     if (contatoAtual) {
       setNome(contatoAtual.nome || '')
       setEmail(contatoAtual.email || '')
       setTelefone(contatoAtual.telefone || '')
     }
-  }, [id, itens])
+  }, [id, itens, contatoAtual])
+
+  useEffect(() => {
+    if (nomeInputRef.current) {
+      nomeInputRef.current.focus()
+    }
+  }, [nomeInputRef])
+
+  const handleEditar = () => {
+    dispatch(setEstaEditando({ id, value: true }))
+  }
+
+  const handleCancelar = () => {
+    dispatch(setEstaEditando({ id, value: false }))
+  }
 
   return (
     <S.Card>
       <S.Name
         ref={nomeInputRef}
-        disabled={!estaEditando}
+        disabled={!contatoAtual?.estaEditando}
         value={nome}
         onChange={(evento) => setNome(evento.target.value)}
         placeholder="Nome"
       />
       <S.Email
-        disabled={!estaEditando}
+        disabled={!contatoAtual?.estaEditando}
         value={email}
         onChange={(evento) => setEmail(evento.target.value)}
         placeholder="Email"
       />
       <S.Telefone
-        disabled={!estaEditando}
+        disabled={!contatoAtual?.estaEditando}
         value={telefone}
         onChange={(evento) => setTelefone(evento.target.value)}
         placeholder="Telefone"
       />
-      {estaEditando ? (
-        <>
-          <S.BotaoSalvar
-            onClick={() => {
-              if (nome.trim().length === 0) {
-                alert('Digite o nome do contato')
-              } else {
-                if (cadastrando) onClickBotao(false)
-
-                dispatch(
-                  editar({
-                    nome: nome.trim(),
-                    email: email.trim(),
-                    telefone: telefone.trim(),
-                    id
-                  })
-                )
-                setEstaEditando(false)
-              }
-            }}
-          >
-            Salvar
-          </S.BotaoSalvar>
-          <S.BotaoCancelar
-            onClick={() => {
-              if (cadastrando && !nome.trim()) {
-                onClickBotao(false)
-                dispatch(remover(id))
-              } else {
-                setEstaEditando(false)
-                setNome(nomeOriginal)
-                setEmail(emailOriginal)
-                setTelefone(telefoneOriginal)
-              }
-            }}
-          >
-            Cancelar
-          </S.BotaoCancelar>
-        </>
+      {contatoAtual?.estaEditando ? (
+        <BotaoComposicao>
+          <BotaoComposicao.Salvar
+            nome={nome}
+            email={email}
+            id={id}
+            telefone={telefone}
+          />
+          <BotaoComposicao.Cancelar onClick={handleCancelar} />
+        </BotaoComposicao>
       ) : (
-        <>
-          <S.BotaoEditar onClick={() => setEstaEditando(true)}>
-            Editar
-          </S.BotaoEditar>
-          <S.BotaoExcluir onClick={() => dispatch(remover(id))}>
-            Excluir
-          </S.BotaoExcluir>
-        </>
+        <BotaoComposicao>
+          <BotaoComposicao.Editar onClick={handleEditar} />
+          <BotaoComposicao.Excluir id={id} />
+        </BotaoComposicao>
       )}
     </S.Card>
   )

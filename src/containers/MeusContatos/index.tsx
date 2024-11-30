@@ -14,10 +14,6 @@ const MeusContatos = () => {
   const [cadastrando, setCadastrando] = useState(false)
 
   const handleBotaoClick = (evento: boolean) => {
-    if (evento) {
-      const novoContato = { nome: '', email: '', telefone: '' }
-      dispatch(cadastrar(novoContato))
-    }
     setCadastrando(evento)
   }
 
@@ -44,6 +40,7 @@ const MeusContatos = () => {
                 telefone={i.telefone}
                 cadastrando={cadastrando && i.id === itens.length}
                 onClickBotao={handleBotaoClick}
+                estaEditando={true}
               />
             </li>
           ))}
