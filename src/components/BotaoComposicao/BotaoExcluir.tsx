@@ -3,11 +3,11 @@ import { Excluir } from './styles'
 
 import { remover } from '../../store/reducers/contatos'
 
-type BotaoExcluirProps = {
+type Props = {
   id: number
 }
 
-const BotaoExcluir = ({ id }: BotaoExcluirProps) => {
+const BotaoExcluir = ({ id }: Props) => {
   const dispatch = useDispatch()
 
   return <Excluir onClick={() => dispatch(remover(id))}>Excluir</Excluir>

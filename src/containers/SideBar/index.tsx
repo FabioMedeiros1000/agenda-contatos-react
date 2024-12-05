@@ -7,12 +7,10 @@ const SideBar = () => {
   const dispatch = useDispatch()
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Previne que preenchimentos automáticos afetem a lógica do filtro
   useEffect(() => {
     const handleAutocomplete = (evento: Event) => {
       const inputElement = evento.target as HTMLInputElement
 
-      // Apenas reseta o valor se for preenchimento automático
       if (
         inputElement === inputRef.current &&
         document.activeElement !== inputElement

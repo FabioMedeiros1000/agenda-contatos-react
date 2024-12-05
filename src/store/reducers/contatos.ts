@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ContatoProps } from '../../components/Contato'
 
-type ContatoState = {
-  itens: ContatoProps[]
-}
-
 type EstaEditandoPayload = {
   id: number
   value: boolean
+}
+
+type ContatoState = {
+  itens: ContatoProps[]
 }
 
 const initialState: ContatoState = {

@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
 
 import { RootReducer } from '../../store'
 import BotaoComposicao from '../BotaoComposicao'
-import { setEstaEditando } from '../../store/reducers/contatos'
 
 export type ContatoProps = {
   nome: string
@@ -21,7 +20,6 @@ const Contato = ({
   telefone: telefoneOriginal,
   id
 }: ContatoProps) => {
-  const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contatos)
 
   const [nome, setNome] = useState(nomeOriginal)
@@ -45,14 +43,6 @@ const Contato = ({
       nomeInputRef.current.focus()
     }
   }, [])
-
-  const handleEditar = () => {
-    dispatch(setEstaEditando({ id, value: true }))
-  }
-
-  const handleCancelar = () => {
-    dispatch(setEstaEditando({ id, value: false }))
-  }
 
   return (
     <S.Card>
@@ -83,11 +73,16 @@ const Contato = ({
             id={id}
             telefone={telefone}
           />
-          <BotaoComposicao.Cancelar onClick={handleCancelar} />
+          <BotaoComposicao.Cancelar
+            email={emailOriginal}
+            telefone={telefoneOriginal}
+            nome={nomeOriginal}
+            id={id}
+          />
         </BotaoComposicao>
       ) : (
         <BotaoComposicao>
-          <BotaoComposicao.Editar onClick={handleEditar} />
+          <BotaoComposicao.Editar id={id} />
           <BotaoComposicao.Excluir id={id} />
         </BotaoComposicao>
       )}
