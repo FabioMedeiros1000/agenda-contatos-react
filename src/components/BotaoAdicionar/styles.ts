@@ -20,8 +20,8 @@ export const Botao = styled.button`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 22px;
-    padding: 4px 10px;
+    font-size: 40px;
+    padding: 12px 22px;
     right: 25px;
     bottom: 15px;
   }
