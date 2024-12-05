@@ -10,6 +10,7 @@ A **Agenda de Contatos** é uma aplicação web intuitiva e funcional desenvolvi
 - **Editar Contatos:** Modifique os detalhes de qualquer contato existente com facilidade.
 - **Remover Contatos:** Exclua contatos de forma direta com um clique.
 - **Listagem de Contatos:** Visualize todos os contatos cadastrados em uma interface limpa e organizada.
+- **Design Responsivo**: Interface adaptável a diferentes dispositivos, garantindo uma ótima experiência em desktops, tablets e celulares.
 
 ## Tecnologias Utilizadas
 - **TypeScript:** Fornece tipagem estática, aumentando a segurança e robustez do código.
