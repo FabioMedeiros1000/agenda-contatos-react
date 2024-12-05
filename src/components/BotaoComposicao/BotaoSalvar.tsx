@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Salvar } from './styles'
-import { editar, setEstaEditando } from '../../store/reducers/contatos'
-import { RootReducer } from '../../store'
+import { editar } from '../../store/reducers/contatos'
 
 type BotaoSalvarProps = {
   nome: string
@@ -12,7 +11,6 @@ type BotaoSalvarProps = {
 
 const BotaoSalvar = ({ nome, email, telefone, id }: BotaoSalvarProps) => {
   const dispatch = useDispatch()
-  const { itens } = useSelector((state: RootReducer) => state.contatos)
 
   const salvarContato = () => {
     if (!nome.trim()) {
@@ -20,7 +18,6 @@ const BotaoSalvar = ({ nome, email, telefone, id }: BotaoSalvarProps) => {
       return
     }
 
-    // Atualiza o contato na store
     dispatch(
       editar({
         nome: nome.trim(),
@@ -30,9 +27,6 @@ const BotaoSalvar = ({ nome, email, telefone, id }: BotaoSalvarProps) => {
         estaEditando: false
       })
     )
-
-    // Define `estaEditando` como falso para o contato atual
-    dispatch(setEstaEditando({ id, value: false }))
   }
 
   return <Salvar onClick={salvarContato}>Salvar</Salvar>

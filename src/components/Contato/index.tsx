@@ -3,8 +3,6 @@ import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
 
-import { BotaoAdicionarProps } from '../BotaoAdicionar'
-
 import { RootReducer } from '../../store'
 import BotaoComposicao from '../BotaoComposicao'
 import { setEstaEditando } from '../../store/reducers/contatos'
@@ -22,7 +20,7 @@ const Contato = ({
   email: emailOriginal,
   telefone: telefoneOriginal,
   id
-}: ContatoProps & BotaoAdicionarProps) => {
+}: ContatoProps) => {
   const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contatos)
 
@@ -46,7 +44,7 @@ const Contato = ({
     if (nomeInputRef.current) {
       nomeInputRef.current.focus()
     }
-  }, [nomeInputRef])
+  }, [])
 
   const handleEditar = () => {
     dispatch(setEstaEditando({ id, value: true }))

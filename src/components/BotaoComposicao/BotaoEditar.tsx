@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux'
 import { Editar } from './styles'
 
 type BotaoEditarProps = {

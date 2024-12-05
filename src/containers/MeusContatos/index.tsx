@@ -1,21 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
 import * as S from './styles'
 import BotaoAdicionar from '../../components/BotaoAdicionar'
-import { useState, useMemo } from 'react'
-import { cadastrar } from '../../store/reducers/contatos'
+import { useMemo } from 'react'
 
 const MeusContatos = () => {
-  const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contatos)
   const { termo } = useSelector((state: RootReducer) => state.filtro)
-
-  const [cadastrando, setCadastrando] = useState(false)
-
-  const handleBotaoClick = (evento: boolean) => {
-    setCadastrando(evento)
-  }
 
   const contatos = useMemo(() => {
     if (!termo) return itens
@@ -38,18 +30,13 @@ const MeusContatos = () => {
                 email={i.email}
                 nome={i.nome}
                 telefone={i.telefone}
-                cadastrando={cadastrando && i.id === itens.length}
-                onClickBotao={handleBotaoClick}
                 estaEditando={true}
               />
             </li>
           ))}
         </S.CardContainer>
       )}
-      <BotaoAdicionar
-        cadastrando={cadastrando}
-        onClickBotao={handleBotaoClick}
-      />
+      <BotaoAdicionar />
     </S.Container>
   )
 }
