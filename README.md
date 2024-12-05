@@ -3,11 +3,14 @@
 ## Descrição
 A **Agenda de Contatos** é uma aplicação web intuitiva e funcional desenvolvida para facilitar o gerenciamento de seus contatos pessoais ou profissionais. Com ela, é possível cadastrar, visualizar, editar e excluir contatos, armazenando informações essenciais como nome, e-mail e número de telefone. A interface amigável torna a experiência de uso simples e eficiente, permitindo que você organize seus contatos de maneira rápida e prática.
 
+![Agenda de contatos](./agenda-de-contatos.png)
+
 ## Funcionalidades
 - **Adicionar Contatos:** Cadastre novos contatos com nome, e-mail e telefone.
 - **Editar Contatos:** Modifique os detalhes de qualquer contato existente com facilidade.
 - **Remover Contatos:** Exclua contatos de forma direta com um clique.
 - **Listagem de Contatos:** Visualize todos os contatos cadastrados em uma interface limpa e organizada.
+- **Design Responsivo**: Interface adaptável a diferentes dispositivos, garantindo uma ótima experiência em desktops, tablets e celulares.
 
 ## Tecnologias Utilizadas
 - **TypeScript:** Fornece tipagem estática, aumentando a segurança e robustez do código.
