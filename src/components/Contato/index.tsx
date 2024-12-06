@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, ChangeEvent } from 'react'
 
 import * as S from './styles'
 
@@ -46,13 +46,19 @@ const Contato = ({
     }
   }, [])
 
+  const inputLimitCaracteres = (text: string) => {
+    if (text.length <= 18) {
+      setNome(text)
+    }
+  }
+
   return (
     <S.Card>
       <S.Name
         ref={nomeInputRef}
         disabled={!contatoAtual?.estaEditando}
         value={nome}
-        onChange={(evento) => setNome(evento.target.value)}
+        onChange={(evento) => inputLimitCaracteres(evento.target.value)}
         placeholder="Nome"
       />
       <S.Email

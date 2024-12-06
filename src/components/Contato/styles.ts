@@ -58,8 +58,10 @@ export const FavoriteContainer = styled.div`
   height: 32px;
 
   @media (max-width: ${breakpoints.tablet}) {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    top: 8px;
+    right: 8px;
   }
 `
 

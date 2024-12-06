@@ -18,10 +18,11 @@ const MeusContatos = () => {
       contatosFiltrados = itens.filter((item) => item.isFavorite === true)
     }
 
-    if (termo)
+    if (termo) {
       contatosFiltrados = contatosFiltrados.filter((item) =>
         item.nome.toLowerCase().includes(termo.toLowerCase())
       )
+    }
 
     return contatosFiltrados
   }, [itens, termo, showFavorites])
@@ -31,24 +32,22 @@ const MeusContatos = () => {
       <S.Titulo>Meus contatos</S.Titulo>
       {itens.length === 0 ? (
         <S.P>Não há contatos cadastrados!</S.P>
+      ) : contatos.length === 0 ? (
+        <S.P>Não há contatos que correspondem ao filtro aplicado!</S.P>
       ) : (
         <S.CardContainer>
-          {contatos.length === 0 ? (
-            <S.P>Não há contatos que correspondem ao filtro aplicado!</S.P>
-          ) : (
-            contatos.map((i) => (
-              <li key={i.id}>
-                <Contato
-                  isFavorite={i.isFavorite}
-                  id={i.id}
-                  email={i.email}
-                  nome={i.nome}
-                  telefone={i.telefone}
-                  estaEditando={true}
-                />
-              </li>
-            ))
-          )}
+          {contatos.map((i) => (
+            <li key={i.id}>
+              <Contato
+                isFavorite={i.isFavorite}
+                id={i.id}
+                email={i.email}
+                nome={i.nome}
+                telefone={i.telefone}
+                estaEditando={i.estaEditando}
+              />
+            </li>
+          ))}
         </S.CardContainer>
       )}
       <BotaoAdicionar />

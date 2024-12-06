@@ -15,7 +15,7 @@ const initialState: ContatoState = {
   itens: [
     {
       id: 1,
-      nome: 'Fábio Leandro Medeiros',
+      nome: 'Fábio Leandro',
       email: 'fabio.leandro.medeiros@gmail.com',
       estaEditando: false,
       isFavorite: true,

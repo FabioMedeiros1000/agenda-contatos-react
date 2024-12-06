@@ -19,12 +19,7 @@ export const Container = styled.div<Props>`
   align-items: center;
   cursor: pointer;
 
-  &:hover {
-    background-color: ${variaveis.preto};
-    color: ${variaveis.branco};
-  }
-
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 14px;
+    height: 45px;
   }
 `

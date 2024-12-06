@@ -1,18 +1,18 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container } from './styles'
 import { RootReducer } from '../../store'
+import { toggleShowFavorites } from '../../store/reducers/contatos'
 
-type Props = {
-  children: string
-  onClick: () => void
-}
-
-const FiltroCard = ({ children, onClick }: Props) => {
+const FiltroCard = () => {
   const { showFavorites } = useSelector((state: RootReducer) => state.contatos)
+  const dispatch = useDispatch()
 
   return (
-    <Container onClick={onClick} highlight={showFavorites}>
-      {children}
+    <Container
+      onClick={() => dispatch(toggleShowFavorites())}
+      highlight={showFavorites}
+    >
+      Mostrar favoritos
     </Container>
   )
 }

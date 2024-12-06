@@ -1,11 +1,9 @@
+import { useEffect, useRef } from 'react'
+import * as S from './styles'
 import { useDispatch } from 'react-redux'
-import { useRef, useEffect } from 'react'
-import { Container, Campo, Titulo, Label } from './styles'
 import { alterarTermo } from '../../store/reducers/filtro'
-import FiltroCard from '../../components/FiltroCard'
-import { toggleShowFavorites } from '../../store/reducers/contatos'
 
-const SideBar = () => {
+const FiltroName = () => {
   const dispatch = useDispatch()
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -35,10 +33,9 @@ const SideBar = () => {
   }
 
   return (
-    <Container>
-      <Titulo>Filtros</Titulo>
-      <Label htmlFor="contato">Nome do contato</Label>
-      <Campo
+    <div>
+      <S.Label htmlFor="contato">Nome do contato</S.Label>
+      <S.Campo
         id="contato"
         ref={inputRef}
         onChange={handleInputChange}
@@ -46,9 +43,8 @@ const SideBar = () => {
         autoComplete="off"
         name="sidebar-filter"
       />
-      <FiltroCard />
-    </Container>
+    </div>
   )
 }
 
-export default SideBar
+export default FiltroName

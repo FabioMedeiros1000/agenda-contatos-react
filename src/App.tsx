@@ -5,6 +5,7 @@ import EstiloGlobal, { Container } from './styles'
 import SideBar from './containers/SideBar'
 import MeusContatos from './containers/MeusContatos'
 import store from './store'
+import HamburgerMenu from './components/HamburgerMenu'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <EstiloGlobal />
       <Container>
         <SideBar />
+        <HamburgerMenu />
         <MeusContatos />
       </Container>
     </Provider>

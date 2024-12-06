@@ -20,11 +20,6 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-
-  @media (max-width: ${breakpoints.pc}) {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
 `
 
 export const Titulo = styled.h1`
@@ -48,7 +43,9 @@ export const Titulo = styled.h1`
 export const P = styled.p`
   color: ${variaveis.branco};
   font-size: 22px;
-  margin-bottom: 24px;
+
+  display: block;
+  width: 100%;
 
   @media (max-width: ${breakpoints.pc}) {
     text-align: center;
