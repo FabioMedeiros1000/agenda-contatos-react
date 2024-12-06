@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useEffect, useState, useRef, ChangeEvent } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import * as S from './styles'
 
