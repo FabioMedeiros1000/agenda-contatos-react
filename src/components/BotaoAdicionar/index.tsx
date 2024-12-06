@@ -8,7 +8,9 @@ const BotaoAdicionar = () => {
   return (
     <Botao
       onClick={() => {
-        dispatch(cadastrar({ nome: '', email: '', telefone: '' }))
+        dispatch(
+          cadastrar({ nome: '', email: '', telefone: '', isFavorite: false })
+        )
       }}
     >
       +

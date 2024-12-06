@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux'
 import { useRef, useEffect } from 'react'
-import { Container, Campo, Titulo } from './styles'
+import { Container, Campo, Titulo, Label } from './styles'
 import { alterarTermo } from '../../store/reducers/filtro'
+import FiltroCard from '../../components/FiltroCard'
+import { toggleShowFavorites } from '../../store/reducers/contatos'
 
 const SideBar = () => {
   const dispatch = useDispatch()
@@ -34,14 +36,19 @@ const SideBar = () => {
 
   return (
     <Container>
-      <Titulo>Pesquise o nome</Titulo>
+      <Titulo>Filtros</Titulo>
+      <Label htmlFor="contato">Nome do contato</Label>
       <Campo
+        id="contato"
         ref={inputRef}
         onChange={handleInputChange}
-        placeholder="Nome"
+        placeholder="Digite..."
         autoComplete="off"
         name="sidebar-filter"
       />
+      <FiltroCard onClick={() => dispatch(toggleShowFavorites())}>
+        Mostrar Favoritos
+      </FiltroCard>
     </Container>
   )
 }

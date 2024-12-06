@@ -5,6 +5,7 @@ export const Card = styled.div`
   padding: 16px;
   background-color: ${variaveis.branco};
   border-radius: 16px;
+  position: relative;
 
   @media (max-width: ${breakpoints.pc}) {
     margin-bottom: 16px;
@@ -49,6 +50,19 @@ export const Telefone = styled.input`
   }
 `
 
+export const FavoriteContainer = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 24px;
+    height: 24px;
+  }
+`
+
 const Botao = styled.button`
   font-size: 22px;
   color: ${variaveis.branco};
@@ -90,7 +104,7 @@ export const Name = styled.input`
   display: block;
   background-color: transparent;
   border: none;
-  width: 100%;
+  width: 90%;
   padding: 8px;
 
   @media (max-width: ${breakpoints.tablet}) {

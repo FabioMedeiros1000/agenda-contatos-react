@@ -7,9 +7,10 @@ type Props = {
   email: string
   telefone: string
   id: number
+  isFavorite: boolean
 }
 
-const BotaoSalvar = ({ nome, email, telefone, id }: Props) => {
+const BotaoSalvar = ({ nome, email, telefone, id, isFavorite }: Props) => {
   const dispatch = useDispatch()
 
   const salvarContato = () => {
@@ -34,7 +35,8 @@ const BotaoSalvar = ({ nome, email, telefone, id }: Props) => {
         email: email.trim(),
         telefone: telefone.trim(),
         id,
-        estaEditando: false
+        estaEditando: false,
+        isFavorite
       })
     )
   }

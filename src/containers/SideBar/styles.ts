@@ -6,20 +6,36 @@ export const Titulo = styled.h2`
   font-size: 32px;
   color: ${variaveis.preto};
   margin-bottom: 24px;
+  display: block;
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 16px;
+    font-size: 24px;
+  }
+`
+
+export const Label = styled.label`
+  color: ${variaveis.preto};
+  font-weight: bold;
+  font-size: 18px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 14px;
   }
 `
 
 export const Campo = styled.input`
-  color: ${variaveis.cinza};
-  font-size: 22px;
-  font-weight: 300px;
-  border: none;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+  background-color: ${variaveis.branco};
+  border: 2px solid ${variaveis.preto};
+  font-size: 16px;
   width: 100%;
-  border-bottom: 1px solid ${variaveis.preto};
-  background-color: transparent;
+  color: ${variaveis.preto};
+
+  &::placeholder {
+    color: ${variaveis.cinza};
+  }
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 12px;
@@ -27,13 +43,11 @@ export const Campo = styled.input`
 `
 
 export const Container = styled.div`
-  padding-top: 72px;
-  padding-right: 40px;
-  padding-left: 40px;
-  background-color: ${variaveis.brancoEscuro};
+  padding: 40px;
+  background-color: ${variaveis.branco};
   height: 100vh;
 
   @media (max-width: ${breakpoints.tablet}) {
-    padding: 20px 12px 0px 12px;
+    padding: 20px;
   }
 `

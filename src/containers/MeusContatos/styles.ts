@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import variaveis, { breakpoints } from '../../styles/variaveis'
 
 export const Container = styled.div`
-  padding: 56px 96px 56px 32px;
+  padding: 40px;
   background-color: ${variaveis.preto};
   height: 100vh;
   overflow-y: scroll;
@@ -32,6 +32,7 @@ export const Titulo = styled.h1`
   color: ${variaveis.branco};
   font-size: 48px;
   font-weight: 700;
+  display: block;
 
   @media (max-width: ${breakpoints.pc}) {
     font-size: 40px;

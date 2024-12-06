@@ -6,15 +6,25 @@ import BotaoAdicionar from '../../components/BotaoAdicionar'
 import { useMemo } from 'react'
 
 const MeusContatos = () => {
-  const { itens } = useSelector((state: RootReducer) => state.contatos)
+  const { itens, showFavorites } = useSelector(
+    (state: RootReducer) => state.contatos
+  )
   const { termo } = useSelector((state: RootReducer) => state.filtro)
 
   const contatos = useMemo(() => {
-    if (!termo) return itens
-    return itens.filter((t) =>
-      t.nome.toLowerCase().includes(termo.toLowerCase())
-    )
-  }, [itens, termo])
+    let contatosFiltrados = itens
+
+    if (showFavorites) {
+      contatosFiltrados = itens.filter((item) => item.isFavorite === true)
+    }
+
+    if (termo)
+      contatosFiltrados = contatosFiltrados.filter((item) =>
+        item.nome.toLowerCase().includes(termo.toLowerCase())
+      )
+
+    return contatosFiltrados
+  }, [itens, termo, showFavorites])
 
   return (
     <S.Container>
@@ -23,17 +33,22 @@ const MeusContatos = () => {
         <S.P>Não há contatos cadastrados!</S.P>
       ) : (
         <S.CardContainer>
-          {contatos.map((i) => (
-            <li key={i.id}>
-              <Contato
-                id={i.id}
-                email={i.email}
-                nome={i.nome}
-                telefone={i.telefone}
-                estaEditando={true}
-              />
-            </li>
-          ))}
+          {contatos.length === 0 ? (
+            <S.P>Não há contatos que correspondem ao filtro aplicado!</S.P>
+          ) : (
+            contatos.map((i) => (
+              <li key={i.id}>
+                <Contato
+                  isFavorite={i.isFavorite}
+                  id={i.id}
+                  email={i.email}
+                  nome={i.nome}
+                  telefone={i.telefone}
+                  estaEditando={true}
+                />
+              </li>
+            ))
+          )}
         </S.CardContainer>
       )}
       <BotaoAdicionar />

@@ -1,17 +1,52 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ContatoProps } from '../../components/Contato'
 
-type EstaEditandoPayload = {
+type setStateType = {
   id: number
   value: boolean
 }
 
 type ContatoState = {
   itens: ContatoProps[]
+  showFavorites: boolean
 }
 
 const initialState: ContatoState = {
-  itens: []
+  itens: [
+    {
+      id: 1,
+      nome: 'Fábio Leandro Medeiros',
+      email: 'fabio.leandro.medeiros@gmail.com',
+      estaEditando: false,
+      isFavorite: true,
+      telefone: '(82) 99187-1637'
+    },
+    {
+      id: 2,
+      nome: 'José',
+      email: 'jose@gmail.com',
+      estaEditando: false,
+      isFavorite: false,
+      telefone: '(99) 99999-9999'
+    },
+    {
+      id: 3,
+      nome: 'Talles',
+      email: 'talles@gmail.com',
+      estaEditando: false,
+      isFavorite: false,
+      telefone: '(88) 88888-8888'
+    },
+    {
+      id: 4,
+      nome: 'Sara',
+      email: 'sara@gmail.com',
+      estaEditando: false,
+      isFavorite: true,
+      telefone: '(77) 77777-7777'
+    }
+  ],
+  showFavorites: false
 }
 
 const contatosSlice = createSlice({
@@ -21,11 +56,21 @@ const contatosSlice = createSlice({
     remover: (state, action: PayloadAction<number>) => {
       state.itens = state.itens.filter((i) => i.id !== action.payload)
     },
-    setEstaEditando: (state, action: PayloadAction<EstaEditandoPayload>) => {
+    setEstaEditando: (state, action: PayloadAction<setStateType>) => {
       const contato = state.itens.find((item) => item.id === action.payload.id)
       if (contato) {
         contato.estaEditando = action.payload.value
       }
+    },
+    setIsFavorite: (state, action: PayloadAction<setStateType>) => {
+      const contato = state.itens.find((item) => item.id === action.payload.id)
+
+      if (contato) {
+        contato.isFavorite = action.payload.value
+      }
+    },
+    toggleShowFavorites: (state) => {
+      state.showFavorites = !state.showFavorites
     },
     editar: (state, action: PayloadAction<ContatoProps>) => {
       const indexContato = state.itens.findIndex(
@@ -50,7 +95,13 @@ const contatosSlice = createSlice({
   }
 })
 
-export const { remover, editar, setEstaEditando, cadastrar } =
-  contatosSlice.actions
+export const {
+  remover,
+  editar,
+  setEstaEditando,
+  cadastrar,
+  setIsFavorite,
+  toggleShowFavorites
+} = contatosSlice.actions
 
 export default contatosSlice.reducer

@@ -5,6 +5,7 @@ import * as S from './styles'
 
 import { RootReducer } from '../../store'
 import BotaoComposicao from '../BotaoComposicao'
+import Favorite from '../Favorite'
 
 export type ContatoProps = {
   nome: string
@@ -12,6 +13,7 @@ export type ContatoProps = {
   telefone: string
   id: number
   estaEditando: boolean
+  isFavorite: boolean
 }
 
 const Contato = ({
@@ -65,6 +67,9 @@ const Contato = ({
         onChange={(evento) => setTelefone(evento.target.value)}
         placeholder="Telefone"
       />
+      <S.FavoriteContainer>
+        <Favorite id={id} />
+      </S.FavoriteContainer>
       {contatoAtual?.estaEditando ? (
         <BotaoComposicao>
           <BotaoComposicao.Salvar
@@ -72,6 +77,7 @@ const Contato = ({
             email={email}
             id={id}
             telefone={telefone}
+            isFavorite={contatoAtual.isFavorite ? true : false}
           />
           <BotaoComposicao.Cancelar
             email={emailOriginal}
