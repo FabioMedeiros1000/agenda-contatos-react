@@ -47,31 +47,25 @@ const Contact = ({
     }
   }, [])
 
-  const inputLimitCaracteres = (text: string) => {
-    if (text.length <= 18) {
-      setName(text)
-    }
-  }
-
   return (
     <S.Card>
       <S.Name
         ref={nameInputRef}
         disabled={!currentContact?.isEditing}
         value={name}
-        onChange={(evento) => inputLimitCaracteres(evento.target.value)}
+        onChange={(event) => setName(event.target.value)}
         placeholder="Nome"
       />
       <S.Email
         disabled={!currentContact?.isEditing}
         value={email}
-        onChange={(evento) => setEmail(evento.target.value)}
+        onChange={(event) => setEmail(event.target.value)}
         placeholder="Email"
       />
       <S.Phone
         disabled={!currentContact?.isEditing}
         value={phone}
-        onChange={(evento) => setPhone(evento.target.value)}
+        onChange={(event) => setPhone(event.target.value)}
         placeholder="Telefone"
       />
       <S.FavoriteContainer>

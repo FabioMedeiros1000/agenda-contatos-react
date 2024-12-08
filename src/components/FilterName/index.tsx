@@ -10,8 +10,8 @@ const FilterName = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    const handleAutocomplete = (evento: Event) => {
-      const inputElement = evento.target as HTMLInputElement
+    const handleAutocomplete = (event: Event) => {
+      const inputElement = event.target as HTMLInputElement
 
       if (
         inputElement === inputRef.current &&
@@ -30,8 +30,8 @@ const FilterName = () => {
     }
   }, [dispatch])
 
-  const handleInputChange = (evento: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeNameToSearch(evento.target.value))
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(changeNameToSearch(event.target.value))
   }
 
   return (
