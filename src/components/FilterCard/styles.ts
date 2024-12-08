@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import variaveis, { breakpoints } from '../../styles/variaveis'
+import variables, { breakpoints } from '../../styles/variables'
 
 type Props = {
   highlight: boolean
@@ -7,9 +7,9 @@ type Props = {
 
 export const Container = styled.div<Props>`
   background-color: ${(props) =>
-    props.highlight ? variaveis.preto : variaveis.branco};
-  color: ${(props) => (props.highlight ? variaveis.branco : variaveis.preto)};
-  border: 2px solid ${variaveis.preto};
+    props.highlight ? variables.black : variables.white};
+  color: ${(props) => (props.highlight ? variables.white : variables.black)};
+  border: 2px solid ${variables.black};
   border-radius: 10px;
   height: 72px;
   font-weight: bold;

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import variaveis, { breakpoints } from '../../styles/variaveis'
+import variables, { breakpoints } from '../../styles/variables'
 
 export const Container = styled.div`
   display: none;
 
   @media (max-width: ${breakpoints.pc}) {
     display: block;
-    background-color: ${variaveis.branco};
+    background-color: ${variables.white};
     padding: 8px;
     width: 100%;
 

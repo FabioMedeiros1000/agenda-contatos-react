@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import variaveis, { breakpoints } from '../../styles/variaveis'
+import variables, { breakpoints } from '../../styles/variables'
 
-export const Botao = styled.button`
+export const Button = styled.button`
   border-radius: 50%;
   border: none;
-  background-color: ${variaveis.verde};
+  background-color: ${variables.green};
   font-size: 65px;
-  color: ${variaveis.branco};
+  color: ${variables.white};
   padding: 12px 35px;
   cursor: pointer;
   position: fixed;

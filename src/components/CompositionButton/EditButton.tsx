@@ -1,19 +1,21 @@
 import { useDispatch } from 'react-redux'
+
+import { setisEditing } from '../../store/reducers/contacts'
+
 import { Editar } from './styles'
-import { setEstaEditando } from '../../store/reducers/contatos'
 
 type Props = {
   id: number
 }
 
-const BotaoEditar = ({ id }: Props) => {
+const EditButton = ({ id }: Props) => {
   const dispatch = useDispatch()
 
   const handleEditar = () => {
-    dispatch(setEstaEditando({ id, value: true }))
+    dispatch(setisEditing({ id, value: true }))
   }
 
   return <Editar onClick={handleEditar}>Editar</Editar>
 }
 
-export default BotaoEditar
+export default EditButton

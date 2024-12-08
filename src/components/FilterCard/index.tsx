@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Container } from './styles'
-import { RootReducer } from '../../store'
-import { toggleShowFavorites } from '../../store/reducers/contatos'
 
-const FiltroCard = () => {
-  const { showFavorites } = useSelector((state: RootReducer) => state.contatos)
+import { RootReducer } from '../../store'
+import { toggleShowFavorites } from '../../store/reducers/contacts'
+
+import { Container } from './styles'
+
+const FilterCard = () => {
+  const { showFavorites } = useSelector((state: RootReducer) => state.contacts)
   const dispatch = useDispatch()
 
   return (
@@ -17,4 +19,4 @@ const FiltroCard = () => {
   )
 }
 
-export default FiltroCard
+export default FilterCard

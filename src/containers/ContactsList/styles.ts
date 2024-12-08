@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import variaveis, { breakpoints } from '../../styles/variaveis'
+import variables, { breakpoints } from '../../styles/variables'
 
 export const Container = styled.div`
   padding: 40px;
-  background-color: ${variaveis.preto};
+  background-color: ${variables.black};
   height: 100vh;
   overflow-y: scroll;
 
@@ -22,9 +22,9 @@ export const CardContainer = styled.div`
   gap: 16px;
 `
 
-export const Titulo = styled.h1`
+export const Title = styled.h1`
   margin-bottom: 24px;
-  color: ${variaveis.branco};
+  color: ${variables.white};
   font-size: 48px;
   font-weight: 700;
   display: block;
@@ -41,7 +41,7 @@ export const Titulo = styled.h1`
 `
 
 export const P = styled.p`
-  color: ${variaveis.branco};
+  color: ${variables.white};
   font-size: 22px;
 
   display: block;

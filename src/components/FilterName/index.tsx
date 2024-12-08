@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react'
-import * as S from './styles'
 import { useDispatch } from 'react-redux'
-import { alterarTermo } from '../../store/reducers/filtro'
 
-const FiltroName = () => {
+import { changeNameToSearch } from '../../store/reducers/filter'
+
+import * as S from './styles'
+
+const FilterName = () => {
   const dispatch = useDispatch()
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -16,7 +18,7 @@ const FiltroName = () => {
         document.activeElement !== inputElement
       ) {
         inputElement.value = ''
-        dispatch(alterarTermo(''))
+        dispatch(changeNameToSearch(''))
       }
     }
 
@@ -29,13 +31,13 @@ const FiltroName = () => {
   }, [dispatch])
 
   const handleInputChange = (evento: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(alterarTermo(evento.target.value))
+    dispatch(changeNameToSearch(evento.target.value))
   }
 
   return (
     <div>
       <S.Label htmlFor="contato">Nome do contato</S.Label>
-      <S.Campo
+      <S.Input
         id="contato"
         ref={inputRef}
         onChange={handleInputChange}
@@ -47,4 +49,4 @@ const FiltroName = () => {
   )
 }
 
-export default FiltroName
+export default FilterName

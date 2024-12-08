@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
-import { breakpoints } from './variaveis'
-import { Container as Aside } from '../containers/SideBar/styles'
+import { breakpoints } from './variables'
+
+import { Container as Aside } from '../containers/Sidebar/styles'
 
 const EstiloGlobal = createGlobalStyle`
   * {

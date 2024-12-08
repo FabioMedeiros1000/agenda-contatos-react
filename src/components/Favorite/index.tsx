@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
+
 import { RootReducer } from '../../store'
-import { setIsFavorite } from '../../store/reducers/contatos'
-import variaveis from '../../styles/variaveis'
+import { setIsFavorite } from '../../store/reducers/contacts'
+
+import variables from '../../styles/variables'
 
 type Props = {
   id: number
@@ -10,9 +12,9 @@ type Props = {
 const Favorite = ({ id }: Props) => {
   const dispatch = useDispatch()
 
-  const { itens } = useSelector((state: RootReducer) => state.contatos)
+  const { items } = useSelector((state: RootReducer) => state.contacts)
 
-  const isFavoriteInRedux = itens.find((item) => item.id === id)?.isFavorite
+  const isFavoriteInRedux = items.find((item) => item.id === id)?.isFavorite
 
   const toggleFavorite = () => {
     dispatch(setIsFavorite({ id, value: !isFavoriteInRedux }))
@@ -22,8 +24,8 @@ const Favorite = ({ id }: Props) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill={isFavoriteInRedux ? variaveis.amarelo : 'none'}
-      stroke={variaveis.preto}
+      fill={isFavoriteInRedux ? variables.yellow : 'none'}
+      stroke={variables.black}
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"

@@ -1,20 +1,21 @@
-import React from 'react'
 import { Provider } from 'react-redux'
 
-import EstiloGlobal, { Container } from './styles'
-import SideBar from './containers/SideBar'
-import MeusContatos from './containers/MeusContatos'
-import store from './store'
+import Sidebar from './containers/Sidebar'
+import ContactsList from './containers/ContactsList'
 import HamburgerMenu from './components/HamburgerMenu'
+
+import store from './store'
+
+import EstiloGlobal, { Container } from './styles'
 
 function App() {
   return (
     <Provider store={store}>
       <EstiloGlobal />
       <Container>
-        <SideBar />
+        <Sidebar />
         <HamburgerMenu />
-        <MeusContatos />
+        <ContactsList />
       </Container>
     </Provider>
   )

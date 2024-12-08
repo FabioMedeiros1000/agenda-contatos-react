@@ -1,54 +1,16 @@
-import { useDispatch } from 'react-redux'
-import { useRef, useEffect } from 'react'
-import { Container, Campo, Titulo, Label } from './styles'
-import { alterarTermo } from '../../store/reducers/filtro'
-import FiltroCard from '../../components/FiltroCard'
-import { toggleShowFavorites } from '../../store/reducers/contatos'
+import FilterCard from '../../components/FilterCard'
+import FilterName from '../../components/FilterName'
 
-const SideBar = () => {
-  const dispatch = useDispatch()
-  const inputRef = useRef<HTMLInputElement>(null)
+import * as S from './styles'
 
-  useEffect(() => {
-    const handleAutocomplete = (evento: Event) => {
-      const inputElement = evento.target as HTMLInputElement
-
-      if (
-        inputElement === inputRef.current &&
-        document.activeElement !== inputElement
-      ) {
-        inputElement.value = ''
-        dispatch(alterarTermo(''))
-      }
-    }
-
-    const inputElement = inputRef.current
-    inputElement?.addEventListener('input', handleAutocomplete)
-
-    return () => {
-      inputElement?.removeEventListener('input', handleAutocomplete)
-    }
-  }, [dispatch])
-
-  const handleInputChange = (evento: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(alterarTermo(evento.target.value))
-  }
-
+const Sidebar = () => {
   return (
-    <Container>
-      <Titulo>Filtros</Titulo>
-      <Label htmlFor="contato">Nome do contato</Label>
-      <Campo
-        id="contato"
-        ref={inputRef}
-        onChange={handleInputChange}
-        placeholder="Digite..."
-        autoComplete="off"
-        name="sidebar-filter"
-      />
-      <FiltroCard />
-    </Container>
+    <S.Container>
+      <S.Title>Filtros</S.Title>
+      <FilterName />
+      <FilterCard />
+    </S.Container>
   )
 }
 
-export default SideBar
+export default Sidebar

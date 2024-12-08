@@ -1,9 +1,12 @@
-import { Squash as Hamburger } from 'hamburger-react'
 import { useState } from 'react'
+import { Squash as Hamburger } from 'hamburger-react'
+
+import FilterName from '../FilterName'
+import FilterCard from '../FilterCard'
+
 import { Container, HamburgerContent } from './styles'
-import variaveis from '../../styles/variaveis'
-import FiltroName from '../FiltroName'
-import FiltroCard from '../FiltroCard'
+
+import variables from '../../styles/variables'
 
 const HamburgerMenu = () => {
   const [isOpen, setOpen] = useState(false)
@@ -17,13 +20,13 @@ const HamburgerMenu = () => {
           duration={0.5}
           toggled={isOpen}
           toggle={setOpen}
-          color={variaveis.preto}
+          color={variables.black}
         />
       </div>
       <HamburgerContent className={isOpen ? 'is-open' : ''}>
         <div className="divideInCols">
-          <FiltroName />
-          <FiltroCard />
+          <FilterName />
+          <FilterCard />
         </div>
       </HamburgerContent>
     </Container>
