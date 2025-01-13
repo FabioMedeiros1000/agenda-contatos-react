@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ContactProps } from '../../components/Contact'
+import { loadFromLocalStorage } from '../../utils/localStorage'
 
 type setStateType = {
   id: number
@@ -12,7 +13,10 @@ type ContactState = {
   showFavorites: boolean
 }
 
-const initialState: ContactState = {
+const savedContacts = loadFromLocalStorage('contacts')
+console.log(savedContacts)
+
+const initialState: ContactState = savedContacts || {
   items: [
     {
       id: 1,
